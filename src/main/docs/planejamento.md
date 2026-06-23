@@ -54,16 +54,17 @@ Representa o problema ou solicitação aberta por um usuário.
     7- A primeira versão não terá login.
 
 # Informaçoes
-Por enquanto a parte de "Usuario" Não tera no sistema um chamado ja vai receber o nome e o email do solicitante.
-Somente para facilitar a criaçao do primeiro codigo, e futuramente evoluir
 
-Status precisa ser um enum por que quero que ele tenha somente alguns valores:
-aberto, em analise, em andamento, parado, resolvido, fechado.
 
-Da mesma forma prioridade tembem tem que ser Enum afinal so existe prioridade:
-baixa, media, alta, extrema.
+# Quando um chamado for criado oq sera pedido para o usuario?
+    -Titulo
+    -Descriçao
+    -Categoria
+    -Prioridade 
+    Tudo isso foi definido no DTO criarChamadoRequest
 
-Categoria também sera Enum mas em categoria vão existir varias conforme o projeto for evoluindo
-
-# Quando um chamado nasce...
-quando um chamado nasce quem deve definir cada coisa?
+# Quando um chamado for criado oq deve retornar para o front?
+    -id
+    -dataCriacao
+    -mensagem (uma mensagem de confirmaçao, n q seja necessario mas é legal) 
+    -status

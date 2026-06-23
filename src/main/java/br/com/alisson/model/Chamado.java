@@ -9,8 +9,7 @@ public class Chamado {
     private Status status = Status.ABERTO;
     private Prioridade prioridade;
     private String categoria;
-    private String nomeSolicitante;
-    private String emailSolicitante;
+    private Solicitante solicitante;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
     private Tecnico tecnico;
@@ -31,13 +30,13 @@ public class Chamado {
         EXTREMA
     }
 
-    public Chamado(String titulo, String descricao, String categoria, String nomeSolicitante, String emailSolicitante,Prioridade prioridade) {
+    public Chamado(String titulo, String descricao, String categoria, Solicitante solicitante,Prioridade prioridade) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.categoria = categoria;
-        this.nomeSolicitante = nomeSolicitante;
-        this.emailSolicitante = emailSolicitante;
+        this.solicitante = solicitante;
         this.prioridade = prioridade;
+        this.dataCriacao = LocalDateTime.now();
     }
 
     public int getId() {
@@ -84,20 +83,12 @@ public class Chamado {
         this.categoria = categoria;
     }
 
-    public String getNomeSolicitante() {
-        return nomeSolicitante;
+    public Tecnico getTecnico() {
+        return tecnico;
     }
 
-    public void setNomeSolicitante(String nomeSolicitante) {
-        this.nomeSolicitante = nomeSolicitante;
-    }
-
-    public String getEmailSolicitante() {
-        return emailSolicitante;
-    }
-
-    public void setEmailSolicitante(String emailSolicitante) {
-        this.emailSolicitante = emailSolicitante;
+    public Solicitante getSolicitante() {
+        return solicitante;
     }
 
     public LocalDateTime getDataAtualizacao() {
@@ -114,5 +105,11 @@ public class Chamado {
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public void assumir(Tecnico tecnico) {
+        this.tecnico = tecnico;
+        this.dataAtualizacao = LocalDateTime.now();
+        this.status = Status.EM_ANDAMENTO;
     }
 }
