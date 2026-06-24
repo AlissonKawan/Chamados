@@ -1,10 +1,7 @@
 package br.com.alisson.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +25,7 @@ public class Chamado extends PanacheEntity {
     private LocalDateTime dataAtualizacao;
 
     @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
     public Chamado() {
