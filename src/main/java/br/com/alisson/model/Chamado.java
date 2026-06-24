@@ -1,18 +1,37 @@
 package br.com.alisson.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDateTime;
 
-public class Chamado {
-    private int id;
+@Entity
+public class Chamado extends PanacheEntity {
     private String titulo;
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
     private Status status = Status.ABERTO;
+
+    @Enumerated(EnumType.STRING)
     private Prioridade prioridade;
+
     private String categoria;
+
+    @ManyToOne
     private Solicitante solicitante;
+
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
+
+    @ManyToOne
     private Tecnico tecnico;
+
+    public Chamado() {
+    }
 
     public enum Status {
         ABERTO,
@@ -37,10 +56,6 @@ public class Chamado {
         this.solicitante = solicitante;
         this.prioridade = prioridade;
         this.dataCriacao = LocalDateTime.now();
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTitulo() {

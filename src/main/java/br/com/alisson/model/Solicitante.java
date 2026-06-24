@@ -1,15 +1,20 @@
 package br.com.alisson.model;
 
-public class Solicitante {
-    private int id;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.*;
+
+@Entity
+public class Solicitante extends PanacheEntity {
+
+    @OneToOne
     private Conta conta;
 
     public Solicitante(Conta conta) {
         this.conta = conta;
     }
 
-    public int getId() {
-        return id;
+    public Solicitante() {
+
     }
 
     public Conta getConta() {

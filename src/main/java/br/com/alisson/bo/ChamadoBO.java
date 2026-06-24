@@ -6,8 +6,11 @@ import br.com.alisson.model.Tecnico;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.ArrayList;
+
 @ApplicationScoped
 public class ChamadoBO {
+    private ArrayList<Chamado> chamados;
     @Inject
     ChamadoDAO chamadoDAO;
 
@@ -19,5 +22,9 @@ public class ChamadoBO {
         }
         chamadoDAO.atualizar(chamado);
         return chamado;
+    }
+
+    public ChamadoDAO listar() {
+        return chamadoDAO.listar;
     }
 }

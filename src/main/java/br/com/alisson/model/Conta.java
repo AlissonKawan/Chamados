@@ -1,11 +1,19 @@
 package br.com.alisson.model;
 
-public class Conta {
-    private int id;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+
+@Entity
+public class Conta extends PanacheEntity {
+
     private String nome;
     private String email;
     private String senha;
     private Tipo tipo;
+
+    public Conta() {
+    }
+
     public enum Tipo{
         ADMIN,
         TECNICO,
@@ -19,9 +27,6 @@ public class Conta {
         this.nome = nome;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getNome() {
         return nome;

@@ -1,7 +1,20 @@
 package br.com.alisson.model;
 
-public class Tecnico {
-    private int id;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
+
+@Entity
+public class Tecnico extends PanacheEntity {
+
+    @OneToOne
+    private Conta conta;
+
+    private especialidade especialidade;
+
+    public Tecnico() {
+    }
+
     public enum especialidade {
         ANALISTA,
         DESENVOLVEDOR,
@@ -9,14 +22,9 @@ public class Tecnico {
         SUPORTE,
         RH
     }
-    private especialidade especialidade;
 
     public Tecnico(especialidade especialidade) {
         this.especialidade = especialidade;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public especialidade getEspecialidade() {
